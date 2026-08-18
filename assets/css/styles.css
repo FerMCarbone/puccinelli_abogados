@@ -192,6 +192,16 @@ img { max-width: 100%; }
 .team-placeholder h3 { font-size: 18px; color: var(--ink-soft); }
 .team-placeholder p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
 
+/* Testimonios */
+.rating-badge { margin-top: var(--s-3); display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink-soft); }
+.rating-badge:hover { color: var(--accent); }
+.rating-stars { color: var(--accent); letter-spacing: 0.05em; font-size: 15px; }
+.testimonios-grid { margin-top: var(--s-5); display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--s-3); }
+.testimonio-card { background: var(--white); border: 1px solid var(--line); padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); }
+.testimonio-quote { font-size: 15px; line-height: 1.65; color: var(--ink); flex: 1; }
+.testimonio-author { font-size: 13px; color: var(--ink-soft); font-weight: 600; }
+.testimonio-author .testimonio-source { font-weight: 400; }
+
 /* Why */
 .why-grid { margin-top: var(--s-5); display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--s-4); }
 .why-item { border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: var(--s-2); }
