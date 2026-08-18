@@ -244,9 +244,6 @@ img { max-width: 100%; }
 .carousel-dots { display: flex; gap: 8px; }
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); border: 0; padding: 0; cursor: pointer; }
 .carousel-dot.active { background: var(--accent); }
-@media (min-width: 720px) {
-  .carousel-controls { display: none; }
-}
 
 /* Why */
 .why-grid { margin-top: var(--s-5); display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--s-4); }
