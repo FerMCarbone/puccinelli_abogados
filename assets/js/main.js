@@ -63,20 +63,33 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
   if (!track) return;
 
   const cards = [...track.children];
-  cards.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Ir a la reseña ${i + 1}`);
-    dot.addEventListener('click', () => {
-      cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-    });
-    dotsContainer.appendChild(dot);
-  });
-  const dots = [...dotsContainer.children];
+  let dots = [];
+
+  function cardsPerView() {
+    const cardWidth = cards[0].getBoundingClientRect().width + 24;
+    return Math.max(1, Math.round((track.clientWidth + 24) / cardWidth));
+  }
+
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    const reachable = Math.max(1, cards.length - cardsPerView() + 1);
+    for (let i = 0; i < reachable; i++) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Ir a la reseña ${i + 1}`);
+      dot.addEventListener('click', () => {
+        cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+      dotsContainer.appendChild(dot);
+    }
+    dots = [...dotsContainer.children];
+    updateActiveDot();
+  }
 
   function updateActiveDot() {
     const trackLeft = track.getBoundingClientRect().left;
+    const maxIndex = dots.length - 1;
     let closestIndex = 0;
     let closestDist = Infinity;
     cards.forEach((card, i) => {
@@ -86,6 +99,7 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
         closestIndex = i;
       }
     });
+    closestIndex = Math.min(closestIndex, maxIndex);
     dots.forEach((d, i) => d.classList.toggle('active', i === closestIndex));
   }
 
@@ -95,12 +109,20 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
     scrollTimeout = setTimeout(updateActiveDot, 100);
   });
 
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(buildDots, 150);
+  });
+
   function scrollByCards(direction) {
     const cardWidth = cards[0].getBoundingClientRect().width + 24;
     track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
   }
   prevBtn.addEventListener('click', () => scrollByCards(-1));
   nextBtn.addEventListener('click', () => scrollByCards(1));
+
+  buildDots();
 }
 
 setupCarousel('testimoniosTrack', 'testimoniosPrev', 'testimoniosNext', 'testimoniosDots');
