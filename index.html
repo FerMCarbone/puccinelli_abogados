@@ -65,7 +65,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=18">
+<link rel="stylesheet" href="assets/css/styles.css?v=19">
 </head>
 <body>
 
@@ -424,10 +424,17 @@
 
     <div class="contact-form-card">
       <div id="formSent" class="form-sent" hidden>
-        <h3>Consulta lista para enviar</h3>
-        <p>Se abrió su programa de correo con la consulta redactada a <span class="mono">puccinelliabogados@gmail.com</span>. Solo falta confirmar el envío desde ahí. Si no se abrió automáticamente, puede escribirnos directamente a esa dirección.</p>
+        <h3>Consulta enviada</h3>
+        <p>Recibimos su consulta. Nos vamos a comunicar a la brevedad para coordinar una entrevista.</p>
       </div>
-      <form id="contactForm" class="contact-form">
+      <div id="formError" class="form-error" hidden>
+        <h3>No se pudo enviar</h3>
+        <p>Hubo un problema al enviar el formulario. Puede intentar de nuevo, o escribirnos directamente por <a href="https://wa.me/5493415000423" target="_blank" rel="noopener">WhatsApp</a> o a <span class="mono">puccinelliabogados@gmail.com</span>.</p>
+      </div>
+      <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="42af2ed1-ae79-41ae-a2b8-0942a6ab7939">
+        <input type="hidden" name="from_name" value="Puccinelli Abogados — formulario web">
+        <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
         <h3>Formulario de consulta</h3>
         <label>
           Nombre y apellido
@@ -486,6 +493,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=18"></script>
+<script src="assets/js/main.js?v=19"></script>
 </body>
 </html>

@@ -312,6 +312,10 @@ img { max-width: 100%; }
 .form-sent { display: grid; gap: var(--s-2); padding: var(--s-4) 0; }
 .form-sent h3 { font-size: 20px; }
 .form-sent p { font-size: 15px; line-height: 1.7; color: var(--ink-soft); }
+.form-error { display: grid; gap: var(--s-2); padding: var(--s-4) 0; }
+.form-error h3 { font-size: 20px; }
+.form-error p { font-size: 15px; line-height: 1.7; color: var(--ink-soft); }
+.botcheck { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 
 /* Footer */
 .site-footer { background: var(--navy); color: #c9d0dc; padding: var(--s-6) 0 var(--s-4); }

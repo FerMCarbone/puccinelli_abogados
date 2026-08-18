@@ -27,32 +27,42 @@ document.querySelectorAll('.faq-question').forEach((button) => {
 
 const contactForm = document.getElementById('contactForm');
 const formSent = document.getElementById('formSent');
-const STUDY_EMAIL = 'puccinelliabogados@gmail.com';
+const formError = document.getElementById('formError');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const data = new FormData(contactForm);
   const nombre = (data.get('nombre') || '').toString().trim();
-  const telefono = (data.get('telefono') || '').toString().trim();
   const area = (data.get('area') || '').toString().trim();
-  const mensaje = (data.get('mensaje') || '').toString().trim();
+  data.set('subject', `Consulta legal — ${area} — ${nombre}`);
 
-  const subject = `Consulta legal — ${area} — ${nombre}`;
-  const body = [
-    `Nombre y apellido: ${nombre}`,
-    `Teléfono: ${telefono}`,
-    `Área legal: ${area}`,
-    '',
-    'Mensaje:',
-    mensaje,
-  ].join('\n');
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+  const originalLabel = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Enviando...';
+  formError.hidden = true;
 
-  const mailtoUrl = `mailto:${STUDY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.location.href = mailtoUrl;
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: data,
+    });
+    const result = await response.json();
 
-  contactForm.hidden = true;
-  formSent.hidden = false;
+    if (result.success) {
+      contactForm.hidden = true;
+      formSent.hidden = false;
+    } else {
+      throw new Error(result.message || 'Error al enviar');
+    }
+  } catch (err) {
+    formError.hidden = false;
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalLabel;
+  }
 });
 
 function setupCarousel(trackId, prevId, nextId, dotsId) {
