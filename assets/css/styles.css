@@ -182,7 +182,7 @@ img { max-width: 100%; }
 /* Equipo */
 .section-lead { margin-top: var(--s-2); font-size: 16px; line-height: 1.7; color: var(--ink-soft); max-width: 52ch; }
 .team-grid { margin-top: var(--s-5); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--s-4); align-items: start; }
-.team-member { display: grid; grid-template-columns: 180px 1fr; gap: var(--s-4); align-items: start; }
+.team-member { display: grid; grid-template-columns: 180px 1fr; gap: var(--s-4); align-items: start; max-width: 640px; }
 .team-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; border: 1px solid var(--line); display: block; }
 .team-member h3 { font-size: 22px; }
 .team-role { margin-top: 4px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
