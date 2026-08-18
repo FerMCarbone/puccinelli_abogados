@@ -36,8 +36,9 @@ h1, h2, h3 {
   font-weight: 700;
   color: var(--navy);
   letter-spacing: -0.01em;
+  text-align: center;
 }
-p { margin: 0; text-wrap: pretty; }
+p { margin: 0; text-wrap: pretty; text-align: justify; hyphens: auto; }
 input, textarea, select, button { font-family: inherit; font-size: inherit; }
 ol { list-style: none; }
 img { max-width: 100%; }
@@ -105,9 +106,9 @@ img { max-width: 100%; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 50;
-  background: rgba(250, 248, 244, 0.94);
+  background: rgba(22, 35, 58, 0.94);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 .header-inner {
   height: 76px;
@@ -119,30 +120,31 @@ img { max-width: 100%; }
 .logo { display: flex; align-items: center; }
 .logo-img { height: 48px; width: auto; display: block; }
 .nav-desktop { display: flex; align-items: center; gap: var(--s-4); }
-.nav-desktop a { font-size: 14px; color: var(--ink-soft); }
+.nav-desktop a { font-size: 14px; color: #c9d0dc; }
 .header-actions { display: flex; align-items: center; gap: var(--s-2); }
+.btn-sm { padding: 12px 20px; font-size: 14px; gap: 10px; }
 .menu-toggle {
   display: none;
   align-items: center;
   justify-content: center;
   width: 44px; height: 44px;
   background: transparent;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: var(--radius);
   flex-direction: column;
   gap: 5px;
 }
-.menu-toggle span { width: 18px; height: 1px; background: var(--navy); display: block; }
+.menu-toggle span { width: 18px; height: 1px; background: var(--white); display: block; }
 .nav-mobile {
   display: none;
   flex-direction: column;
   padding: var(--s-2) var(--s-3) var(--s-3);
   gap: var(--s-2);
-  border-top: 1px solid var(--line);
-  background: var(--paper);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--navy);
 }
 .nav-mobile.open { display: flex; }
-.nav-mobile a { font-size: 15px; padding: 6px 0; color: var(--ink); }
+.nav-mobile a { font-size: 15px; padding: 6px 0; color: #c9d0dc; }
 
 /* Hero */
 .hero { padding: calc(76px + var(--s-7)) 0 var(--s-7); background: var(--navy); color: var(--white); }

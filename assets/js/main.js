@@ -27,7 +27,7 @@ document.querySelectorAll('.faq-question').forEach((button) => {
 
 const contactForm = document.getElementById('contactForm');
 const formSent = document.getElementById('formSent');
-const STUDY_EMAIL = 'info@puccinelliabogados.com.ar';
+const STUDY_EMAIL = 'puccinelliabogados@gmail.com';
 
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
