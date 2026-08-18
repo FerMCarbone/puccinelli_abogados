@@ -126,7 +126,7 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
     track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
   }
 
-  const AUTO_ADVANCE_MS = 5000;
+  const AUTO_ADVANCE_MS = 3500;
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let autoTimer = null;
 
