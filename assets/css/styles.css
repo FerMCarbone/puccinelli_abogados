@@ -154,7 +154,7 @@ img { max-width: 100%; }
 .rule-short { width: 36px; height: 1px; background: var(--accent); display: block; }
 .eyebrow-text { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-soft); }
 .hero-title { color: var(--white); font-size: clamp(32px, 5vw, 54px); line-height: 1.12; max-width: 16em; }
-.hero-sub { margin-top: var(--s-3); font-size: clamp(16px, 2vw, 19px); line-height: 1.6; color: #c9d0dc; max-width: 34em; font-weight: 300; }
+.hero-sub { margin-top: var(--s-3); font-size: clamp(16px, 2vw, 19px); line-height: 1.6; color: #c9d0dc; max-width: 34em; font-weight: 300; hyphens: none; }
 .hero-cta { margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; }
 .hero-card { border: 1px solid rgba(255, 255, 255, 0.16); padding: var(--s-4); display: grid; gap: var(--s-4); }
 .hero-divider { height: 1px; background: rgba(255, 255, 255, 0.16); }
@@ -162,7 +162,7 @@ img { max-width: 100%; }
 .stat-label { font-size: 13px; color: #c9d0dc; margin-top: 6px; }
 .stat-link { display: block; }
 .stat-link:hover .stat-num { color: var(--accent-soft); }
-.hero-note { font-size: 13px; color: #c9d0dc; line-height: 1.6; text-align: justify; hyphens: auto; }
+.hero-note { font-size: 13px; color: #c9d0dc; line-height: 1.6; text-align: justify; hyphens: none; }
 
 /* Nosotros */
 .nosotros-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--s-6); }

@@ -80,6 +80,7 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
       dot.setAttribute('aria-label', `Ir a la reseña ${i + 1}`);
       dot.addEventListener('click', () => {
         cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+        restartAuto();
       });
       dotsContainer.appendChild(dot);
     }
@@ -117,12 +118,54 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
 
   function scrollByCards(direction) {
     const cardWidth = cards[0].getBoundingClientRect().width + 24;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    if (direction > 0 && track.scrollLeft >= maxScroll - 4) {
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+      return;
+    }
     track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
   }
-  prevBtn.addEventListener('click', () => scrollByCards(-1));
-  nextBtn.addEventListener('click', () => scrollByCards(1));
+
+  const AUTO_ADVANCE_MS = 5000;
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let autoTimer = null;
+
+  function stopAuto() {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+
+  function startAuto() {
+    if (reducedMotion || autoTimer) return;
+    autoTimer = setInterval(() => scrollByCards(1), AUTO_ADVANCE_MS);
+  }
+
+  function restartAuto() {
+    stopAuto();
+    startAuto();
+  }
+
+  prevBtn.addEventListener('click', () => { scrollByCards(-1); restartAuto(); });
+  nextBtn.addEventListener('click', () => { scrollByCards(1); restartAuto(); });
+
+  track.addEventListener('mouseenter', stopAuto);
+  track.addEventListener('mouseleave', startAuto);
+  track.addEventListener('touchstart', stopAuto, { passive: true });
+  track.addEventListener('touchend', startAuto);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAuto();
+    } else {
+      startAuto();
+    }
+  });
 
   buildDots();
+  startAuto();
+
+  return { restartAuto };
 }
 
 (function setupScrollReveal() {
