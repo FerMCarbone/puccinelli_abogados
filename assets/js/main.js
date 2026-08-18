@@ -125,4 +125,51 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
   buildDots();
 }
 
+(function setupScrollReveal() {
+  const selector = [
+    'h2',
+    '.area-card',
+    '.testimonio-card',
+    '.value',
+    '.why-item',
+    '.team-member',
+    '.faq-item',
+    '.proceso-list > li',
+    '.nosotros-grid > div',
+    '.proceso-grid > div',
+    '.contacto-grid > div',
+  ].join(', ');
+  const els = [...document.querySelectorAll(selector)];
+
+  try {
+    const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      return;
+    }
+
+    els.forEach((el) => el.classList.add('reveal'));
+
+    const siblingCount = new Map();
+    els.forEach((el) => {
+      const parent = el.parentElement;
+      const idx = siblingCount.get(parent) || 0;
+      el.style.setProperty('--reveal-i', Math.min(idx, 5));
+      siblingCount.set(parent, idx + 1);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    els.forEach((el) => observer.observe(el));
+  } catch (err) {
+    els.forEach((el) => el.classList.add('revealed'));
+  }
+})();
+
 setupCarousel('testimoniosTrack', 'testimoniosPrev', 'testimoniosNext', 'testimoniosDots');
