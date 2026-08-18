@@ -49,7 +49,7 @@ img { max-width: 100%; }
 .placeholder { color: var(--ink-soft); font-size: 12px; }
 .kicker { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
 .h2 { margin-top: var(--s-2); font-size: clamp(26px, 3.4vw, 36px); line-height: 1.2; }
-.h2-narrow { max-width: 22em; }
+.h2-narrow { max-width: 22em; margin-left: auto; margin-right: auto; }
 .body-soft { font-size: 15px; line-height: 1.7; color: var(--ink-soft); }
 .body-soft-inline { color: var(--ink-soft); }
 .section { padding: var(--s-7) 0; }
