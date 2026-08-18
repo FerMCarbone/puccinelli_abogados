@@ -92,7 +92,7 @@ img { max-width: 100%; }
   justify-content: center;
 }
 .btn-submit:hover { background: var(--navy); color: var(--white); }
-.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; }
+.icon-wa { width: 18px; height: 18px; flex: none; display: block; }
 .link-underline {
   color: rgba(26, 20, 8, 0.7);
   font-size: 15px;
