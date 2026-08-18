@@ -65,7 +65,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=10">
+<link rel="stylesheet" href="assets/css/styles.css?v=11">
 </head>
 <body>
 
@@ -130,8 +130,10 @@
       </div>
       <div class="hero-divider"></div>
       <div class="hero-stat">
-        <div class="stat-num">03</div>
-        <div class="stat-label">áreas de práctica</div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Estudio%20Jur%C3%ADdico%20Puccinelli%20Abogados%20Rosario" target="_blank" rel="noopener" class="stat-link">
+          <div class="stat-num">5.0 ★</div>
+          <div class="stat-label">44 reseñas en Google</div>
+        </a>
       </div>
       <div class="hero-divider"></div>
       <div class="hero-note">Matriculados ante el Colegio de Abogados de Rosario, con actuación en la provincia de Santa Fe.</div>
@@ -178,17 +180,17 @@
     <h2 class="h2 h2-narrow">Tres áreas de trabajo con dedicación específica</h2>
     <div class="areas-grid">
       <article class="area-card">
-        <span class="area-icon area-icon-square"></span>
+        <svg class="area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3" /><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" /><path d="m21 3 1 11h-2" /><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" /><path d="M3 4h8" /></svg>
         <h3>Derecho Civil y Comercial</h3>
         <p>Contratos, obligaciones y cobros; conflictos entre particulares o con empresas; daños y perjuicios; cuestiones de propiedad, locaciones y consorcios; asuntos societarios y comerciales de empresas.</p>
       </article>
       <article class="area-card">
-        <span class="area-icon area-icon-circle"></span>
+        <svg class="area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 13-8.381 8.38a1 1 0 0 1-3.001-3l8.384-8.381" /><path d="m16 16 6-6" /><path d="m21.5 10.5-8-8" /><path d="m8 8 6-6" /><path d="m8.5 7.5 8 8" /></svg>
         <h3>Derecho Penal</h3>
         <p>Defensa en causas penales en todas sus etapas, representación de la persona denunciante o querellante, asistencia en declaraciones y audiencias, y asesoramiento ante una investigación en curso.</p>
       </article>
       <article class="area-card">
-        <span class="area-icon area-icon-diamond"></span>
+        <svg class="area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /><rect width="20" height="14" x="2" y="6" rx="2" /></svg>
         <h3>Derecho Laboral</h3>
         <p>Despidos y liquidaciones finales, registración deficiente del empleo, accidentes y enfermedades del trabajo, reclamos por diferencias salariales, y asesoramiento a empleadores en relaciones laborales.</p>
       </article>
@@ -226,22 +228,64 @@
       <span class="rating-stars" aria-hidden="true">★★★★★</span>
       <span>5.0 · 44 opiniones en Google</span>
     </a>
-    <div class="testimonios-grid">
-      <article class="testimonio-card">
-        <span class="rating-stars" aria-hidden="true">★★★★★</span>
-        <p class="testimonio-quote">“Muy recomendable, inmejorable atención profesional a la hora de soluciones y consultas. Gran servicio.”</p>
-        <p class="testimonio-author">Ignacio Castelli <span class="testimonio-source">· Reseña de Google</span></p>
-      </article>
-      <article class="testimonio-card">
-        <span class="rating-stars" aria-hidden="true">★★★★★</span>
-        <p class="testimonio-quote">“Gracias Claudio por tu servicio, amabilidad y profesionalismo en todos los temas en los que me ayudaste. Suelen ser cuestiones muy sensibles y con su gran experiencia en su espalda me ha ayudado de manera excepcional. Abrazo al equipo!!”</p>
-        <p class="testimonio-author">Augusto <span class="testimonio-source">· Reseña de Google</span></p>
-      </article>
-      <article class="testimonio-card">
-        <span class="rating-stars" aria-hidden="true">★★★★★</span>
-        <p class="testimonio-quote">“Claudio y todo su equipo son excelentes profesionales, el asesoramiento es claro y con mucha precisión. Respondieron claramente sobre las consultas realizadas y sus intervenciones fueron concretas y satisfactorias ante mis requerimientos.”</p>
-        <p class="testimonio-author">Cristián Lavallén <span class="testimonio-source">· Reseña de Google</span></p>
-      </article>
+    <div class="testimonios-carousel-wrap">
+      <div class="testimonios-track" id="testimoniosTrack">
+        <article class="testimonio-card">
+          <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          <p class="testimonio-quote">“Muy recomendable, inmejorable atención profesional a la hora de soluciones y consultas. Gran servicio.”</p>
+          <p class="testimonio-author">Ignacio Castelli <span class="testimonio-source">· Reseña de Google</span></p>
+        </article>
+        <article class="testimonio-card">
+          <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          <p class="testimonio-quote">“Gracias Claudio por tu servicio, amabilidad y profesionalismo en todos los temas en los que me ayudaste. Suelen ser cuestiones muy sensibles y con su gran experiencia en su espalda me ha ayudado de manera excepcional. Abrazo al equipo!!”</p>
+          <p class="testimonio-author">Augusto <span class="testimonio-source">· Reseña de Google</span></p>
+        </article>
+        <article class="testimonio-card">
+          <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          <p class="testimonio-quote">“Claudio y todo su equipo son excelentes profesionales, el asesoramiento es claro y con mucha precisión. Respondieron claramente sobre las consultas realizadas y sus intervenciones fueron concretas y satisfactorias ante mis requerimientos.”</p>
+          <p class="testimonio-author">Cristián Lavallén <span class="testimonio-source">· Reseña de Google</span></p>
+        </article>
+        <article class="testimonio-card">
+          <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          <p class="testimonio-quote">“Son prácticos. Eficientes y expeditivos. Te dan las opciones y cuáles son las alternativas más viables. Muy buen servicio y atención.”</p>
+          <p class="testimonio-author">Victor Omar Charitonov <span class="testimonio-source">· Reseña de Google</span></p>
+        </article>
+        <article class="testimonio-card">
+          <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          <p class="testimonio-quote">“Excelentes profesionales y mejores personas! Estoy muy contento con el asesoramiento brindado por Claudio.”</p>
+          <p class="testimonio-author">Andrés Genera <span class="testimonio-source">· Reseña de Google</span></p>
+        </article>
+        <article class="testimonio-card">
+          <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          <p class="testimonio-quote">“Excelente atención y asesoramiento. Grupo de profesionales muy recomendable.”</p>
+          <p class="testimonio-author">Pablo Andrés <span class="testimonio-source">· Reseña de Google</span></p>
+        </article>
+        <article class="testimonio-card">
+          <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          <p class="testimonio-quote">“Excelente atención, profesionalismo y honestidad.”</p>
+          <p class="testimonio-author">Sonia Diaz <span class="testimonio-source">· Reseña de Google</span></p>
+        </article>
+        <article class="testimonio-card">
+          <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          <p class="testimonio-quote">“Impecable, me resolvió un asunto que me aquejaba en forma rápida y dinámica. Muy buen profesional.”</p>
+          <p class="testimonio-author">Victoria Ortega <span class="testimonio-source">· Reseña de Google</span></p>
+        </article>
+        <article class="testimonio-card">
+          <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          <p class="testimonio-quote">“Excelente atención y predisposición por parte de los empleados. Da gusto recurrir a profesionales con tanto conocimiento como Claudio!!”</p>
+          <p class="testimonio-author">Miranda Micheletti <span class="testimonio-source">· Reseña de Google</span></p>
+        </article>
+        <article class="testimonio-card">
+          <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          <p class="testimonio-quote">“Excelente profesional. La mejor atención. Acompaña un staff impecable. Lo recomiendo.”</p>
+          <p class="testimonio-author">Fabiana Fernandez <span class="testimonio-source">· Reseña de Google</span></p>
+        </article>
+      </div>
+      <div class="carousel-controls">
+        <button type="button" class="carousel-arrow" id="testimoniosPrev" aria-label="Reseña anterior">‹</button>
+        <div class="carousel-dots" id="testimoniosDots"></div>
+        <button type="button" class="carousel-arrow" id="testimoniosNext" aria-label="Reseña siguiente">›</button>
+      </div>
     </div>
   </div>
 </section>
@@ -443,6 +487,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=7"></script>
+<script src="assets/js/main.js?v=11"></script>
 </body>
 </html>
