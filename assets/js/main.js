@@ -15,6 +15,38 @@ navMobile.querySelectorAll('a').forEach((link) => {
   });
 });
 
+const navItems = document.querySelectorAll('.nav-item');
+
+function closeNavItem(item) {
+  item.classList.remove('open');
+  item.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
+}
+
+navItems.forEach((item) => {
+  const toggle = item.querySelector('.nav-toggle');
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = item.classList.contains('open');
+    navItems.forEach((other) => {
+      if (other !== item) closeNavItem(other);
+    });
+    item.classList.toggle('open', !isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+
+document.addEventListener('click', (e) => {
+  navItems.forEach((item) => {
+    if (!item.contains(e.target)) closeNavItem(item);
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    navItems.forEach((item) => closeNavItem(item));
+  }
+});
+
 document.querySelectorAll('.faq-question').forEach((button) => {
   button.addEventListener('click', () => {
     const answer = button.nextElementSibling;
@@ -191,6 +223,8 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
     '.nosotros-grid > div',
     '.proceso-grid > div',
     '.contacto-grid > div',
+    '.biblioteca-card',
+    '.enlaces-list li',
   ].join(', ');
   const els = [...document.querySelectorAll(selector)];
 
