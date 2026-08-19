@@ -61,41 +61,43 @@ const contactForm = document.getElementById('contactForm');
 const formSent = document.getElementById('formSent');
 const formError = document.getElementById('formError');
 
-contactForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  const data = new FormData(contactForm);
-  const nombre = (data.get('nombre') || '').toString().trim();
-  const area = (data.get('area') || '').toString().trim();
-  data.set('subject', `Consulta legal — ${area} — ${nombre}`);
+    const data = new FormData(contactForm);
+    const nombre = (data.get('nombre') || '').toString().trim();
+    const area = (data.get('area') || '').toString().trim();
+    data.set('subject', `Consulta legal — ${area} — ${nombre}`);
 
-  const submitBtn = contactForm.querySelector('button[type="submit"]');
-  const originalLabel = submitBtn.textContent;
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Enviando...';
-  formError.hidden = true;
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    formError.hidden = true;
 
-  try {
-    const response = await fetch(contactForm.action, {
-      method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: data,
-    });
-    const result = await response.json();
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      });
+      const result = await response.json();
 
-    if (result.success) {
-      contactForm.hidden = true;
-      formSent.hidden = false;
-    } else {
-      throw new Error(result.message || 'Error al enviar');
+      if (result.success) {
+        contactForm.hidden = true;
+        formSent.hidden = false;
+      } else {
+        throw new Error(result.message || 'Error al enviar');
+      }
+    } catch (err) {
+      formError.hidden = false;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
     }
-  } catch (err) {
-    formError.hidden = false;
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalLabel;
-  }
-});
+  });
+}
 
 function setupCarousel(trackId, prevId, nextId, dotsId) {
   const track = document.getElementById(trackId);
@@ -219,7 +221,6 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
     '.why-item',
     '.team-member',
     '.faq-item',
-    '.proceso-list > li',
     '.nosotros-grid > div',
     '.proceso-grid > div',
     '.contacto-grid > div',
@@ -260,3 +261,28 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
 })();
 
 setupCarousel('testimoniosTrack', 'testimoniosPrev', 'testimoniosNext', 'testimoniosDots');
+
+function setupStaggerReveal(containerSelector, itemSelector, stepMs) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  const items = [...container.querySelectorAll(itemSelector)];
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion || !('IntersectionObserver' in window) || !items.length) return;
+
+  items.forEach((item) => item.classList.add('stagger-item'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('revealed'), i * stepMs);
+      });
+      observer.disconnect();
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(container);
+}
+
+setupStaggerReveal('.proceso-list', 'li', 180);
