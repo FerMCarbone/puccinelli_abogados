@@ -235,9 +235,9 @@ img { max-width: 100%; }
 .img-caption { margin-top: 10px; font-size: 12px; line-height: 1.6; color: var(--ink-soft); }
 .nosotros-copy { display: grid; gap: var(--s-4); }
 .lead { font-size: 17px; line-height: 1.72; color: var(--ink); }
-.values-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: var(--s-3); }
-.value { border: 1px solid var(--line); border-radius: 999px; padding: 9px 20px; background: var(--white); }
-.value h3 { font-size: 13px; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.02em; color: var(--navy); }
+.values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s-3); margin-top: var(--s-2); }
+.value { border-top: 2px solid var(--navy); padding-top: var(--s-2); }
+.value h3 { font-size: 16px; }
 
 /* Areas */
 .areas-grid { margin-top: var(--s-5); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--s-3); }
@@ -507,7 +507,8 @@ img { max-width: 100%; }
    column so cards never get pushed wider than the viewport. */
 @media (max-width: 480px) {
   .areas-grid,
-  .why-grid {
+  .why-grid,
+  .values-grid {
     grid-template-columns: 1fr;
   }
 }
