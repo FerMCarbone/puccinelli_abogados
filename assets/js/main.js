@@ -262,27 +262,44 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
 
 setupCarousel('testimoniosTrack', 'testimoniosPrev', 'testimoniosNext', 'testimoniosDots');
 
-function setupStaggerReveal(containerSelector, itemSelector, stepMs) {
+function setupScrollProgressReveal(containerSelector, itemSelector, viewportRatio) {
   const container = document.querySelector(containerSelector);
   if (!container) return;
 
   const items = [...container.querySelectorAll(itemSelector)];
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reducedMotion || !('IntersectionObserver' in window) || !items.length) return;
+  if (reducedMotion || !items.length) return;
 
   items.forEach((item) => item.classList.add('stagger-item'));
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      items.forEach((item, i) => {
-        setTimeout(() => item.classList.add('revealed'), i * stepMs);
-      });
-      observer.disconnect();
-    });
-  }, { threshold: 0.2 });
+  let ticking = false;
+  let pending = [...items];
 
-  observer.observe(container);
+  function check() {
+    pending = pending.filter((item) => {
+      const top = item.getBoundingClientRect().top;
+      if (top < window.innerHeight * viewportRatio) {
+        item.classList.add('revealed');
+        return false;
+      }
+      return true;
+    });
+    if (!pending.length) {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    }
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(check);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  check();
 }
 
-setupStaggerReveal('.proceso-list', 'li', 180);
+setupScrollProgressReveal('.proceso-list', 'li', 0.82);

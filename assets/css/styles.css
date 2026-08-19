@@ -20,7 +20,7 @@
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 116px; }
 html, body { max-width: 100%; overflow-x: hidden; }
 body {
   margin: 0;
@@ -469,7 +469,7 @@ img { max-width: 100%; }
 
 /* Footer */
 .site-footer { background: var(--navy); color: #c9d0dc; padding: var(--s-6) 0 var(--s-4); }
-.footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: var(--s-5); }
+.footer-grid { display: grid; grid-template-columns: 1.1fr 0.85fr 1.2fr 0.85fr; gap: var(--s-5); }
 .footer-logo-img { height: 72px; width: auto; display: block; }
 .footer-address { margin-top: var(--s-3); font-size: 14px; line-height: 1.7; }
 .footer-col { display: grid; gap: 10px; align-content: start; font-size: 14px; }
