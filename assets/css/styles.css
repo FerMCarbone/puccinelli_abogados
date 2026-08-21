@@ -237,16 +237,6 @@ img { max-width: 100%; }
   color: var(--ink-soft);
 }
 
-/* Nosotros */
-.nosotros-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--s-6); }
-.nosotros-img { margin-top: var(--s-4); width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--line); display: block; }
-.img-caption { margin-top: 10px; font-size: 12px; line-height: 1.6; color: var(--ink-soft); }
-.nosotros-copy { display: grid; gap: var(--s-4); }
-.lead { font-size: 17px; line-height: 1.72; color: var(--ink); }
-.values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s-3); margin-top: var(--s-2); }
-.value { border-top: 2px solid var(--navy); padding-top: var(--s-2); }
-.value h3 { font-size: 16px; }
-
 /* Areas */
 .areas-grid { margin-top: var(--s-5); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--s-3); }
 .area-card { background: var(--white); border: 1px solid var(--line); padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); }
@@ -320,7 +310,7 @@ img { max-width: 100%; }
 }
 .team-member-body { padding: var(--s-3) var(--s-2) var(--s-4); }
 .team-member h3 { font-size: 17px; color: var(--white); }
-.team-role { margin-top: 6px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-soft); }
+.team-role { margin-top: 6px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; color: var(--accent-soft); }
 
 /* Testimonios */
 .rating-badge { margin-top: var(--s-3); display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink-soft); }
@@ -375,9 +365,9 @@ img { max-width: 100%; }
 /* Proceso */
 .proceso-grid { display: flex; flex-direction: column; align-items: center; gap: var(--s-5); }
 .proceso-intro { max-width: 640px; text-align: center; }
-.proceso-list { width: 100%; max-width: 640px; margin: 0 auto; padding: 0; display: grid; gap: var(--s-3); text-align: left; }
-.proceso-list li { display: grid; grid-template-columns: 56px 1fr; gap: var(--s-3); border-bottom: 1px solid var(--line); padding-bottom: var(--s-3); }
-.proceso-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.proceso-list { width: 100%; max-width: 880px; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-6); text-align: left; }
+@media (max-width: 720px) { .proceso-list { grid-template-columns: 1fr; gap: var(--s-3); } }
+.proceso-list li { display: grid; grid-template-columns: 56px 1fr; gap: var(--s-3); }
 .proceso-num { font-family: var(--font-display); font-size: 22px; color: var(--accent); }
 .proceso-list h3 { font-size: 18px; }
 .proceso-list p { margin-top: 6px; font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
@@ -497,7 +487,6 @@ img { max-width: 100%; }
   .nav-desktop { display: none; }
   .menu-toggle { display: flex; }
   .hero-grid,
-  .nosotros-grid,
   .contacto-grid,
   .footer-grid {
     grid-template-columns: 1fr;
@@ -508,8 +497,7 @@ img { max-width: 100%; }
    its minimum track size once gaps are accounted for — force a single
    column so cards never get pushed wider than the viewport. */
 @media (max-width: 480px) {
-  .areas-grid,
-  .values-grid {
+  .areas-grid {
     grid-template-columns: 1fr;
   }
 }
