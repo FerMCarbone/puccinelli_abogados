@@ -56,8 +56,6 @@ img { max-width: 100%; }
 .section { padding: var(--s-7) 0; }
 .page-head { padding-top: calc(96px + var(--s-6)); }
 .section-alt { background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.section-dark { background: var(--navy); color: var(--white); }
-.section-dark h2, .section-dark h3 { color: var(--white); }
 
 /* Buttons */
 .btn {
@@ -228,6 +226,16 @@ img { max-width: 100%; }
   line-height: 1.5;
   color: var(--navy);
 }
+.quote-note {
+  margin: var(--s-4) auto 0;
+  max-width: 52ch;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
 
 /* Nosotros */
 .nosotros-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--s-6); }
@@ -364,15 +372,10 @@ img { max-width: 100%; }
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); border: 0; padding: 0; cursor: pointer; }
 .carousel-dot.active { background: var(--accent); }
 
-/* Why */
-.why-grid { margin-top: var(--s-5); display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--s-4); }
-.why-item { border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: var(--s-2); }
-.why-item h3 { font-size: 17px; }
-.why-item p { margin-top: 8px; font-size: 14px; line-height: 1.65; color: #c9d0dc; }
-
 /* Proceso */
-.proceso-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: var(--s-6); }
-.proceso-list { margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.proceso-grid { display: flex; flex-direction: column; align-items: center; gap: var(--s-5); }
+.proceso-intro { max-width: 640px; text-align: center; }
+.proceso-list { width: 100%; max-width: 640px; margin: 0 auto; padding: 0; display: grid; gap: var(--s-3); text-align: left; }
 .proceso-list li { display: grid; grid-template-columns: 56px 1fr; gap: var(--s-3); border-bottom: 1px solid var(--line); padding-bottom: var(--s-3); }
 .proceso-list li:last-child { border-bottom: 0; padding-bottom: 0; }
 .proceso-num { font-family: var(--font-display); font-size: 22px; color: var(--accent); }
@@ -495,7 +498,6 @@ img { max-width: 100%; }
   .menu-toggle { display: flex; }
   .hero-grid,
   .nosotros-grid,
-  .proceso-grid,
   .contacto-grid,
   .footer-grid {
     grid-template-columns: 1fr;
@@ -507,7 +509,6 @@ img { max-width: 100%; }
    column so cards never get pushed wider than the viewport. */
 @media (max-width: 480px) {
   .areas-grid,
-  .why-grid,
   .values-grid {
     grid-template-columns: 1fr;
   }

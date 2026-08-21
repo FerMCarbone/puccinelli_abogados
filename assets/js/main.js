@@ -218,7 +218,6 @@ function setupCarousel(trackId, prevId, nextId, dotsId) {
     '.area-card',
     '.testimonio-card',
     '.value',
-    '.why-item',
     '.team-member',
     '.faq-item',
     '.nosotros-grid > div',
