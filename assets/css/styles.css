@@ -238,7 +238,7 @@ img { max-width: 100%; }
 }
 
 /* Nosotros */
-.nosotros-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--s-6); align-items: start; }
+.nosotros-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--s-6); }
 .nosotros-img { margin-top: var(--s-4); width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--line); display: block; }
 .img-caption { margin-top: 10px; font-size: 12px; line-height: 1.6; color: var(--ink-soft); }
 .nosotros-copy { display: grid; gap: var(--s-4); }
